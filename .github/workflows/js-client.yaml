@@ -1,0 +1,47 @@
+name: generate-client
+
+on:
+  push:
+    branches:
+      - test-branch
+
+jobs:
+  generate_js_client:
+    runs-on: ubuntu-latest
+    steps:
+      - name: set branch name
+        id: new_branch
+        run: echo ::set-output name=new_branch::$(echo "client_update_$(date +'%Y-%m-%dT%H.%M.%S')")
+      - name: Checkout
+        uses: actions/checkout@v3
+      - name: run js client generation
+        run: ./Taskfile typescript
+      - name: Check if there are changes
+        id: changes
+        uses: UnicornGlobal/has-changes-action@v1.0.11
+      - if: steps.changes.outputs.changed == 1
+        uses: cpina/github-action-push-to-another-repository@devel
+        env:
+          API_TOKEN_GITHUB: ${{ secrets.API_TOKEN_GITHUB }}
+        with:
+          source-directory: examples/sdk/ts/*
+          destination-github-username: 'apetrosyan1613'
+          destination-repository-name: 'test-repo'
+          user-email: apetrosyan@qase.io
+          commit-message: "[build] update client'"
+          target-branch: main
+          target-directory:  qase-javascript/qaseio/src/
+      - name: Test get variable exported by push-to-another-repository
+      - name: create pr
+        id: create_pr
+        uses: octokit/request-action@v2.x
+        with:
+          route: POST /repos/{owner}/{repo}/pulls
+          owner: sklmx
+          repo: qase-javascript
+          base: 'master'
+          head: ${{ steps.new_branch.outputs.new_branch }}
+          title: 'Specs updated'
+          body: 'This PR is auto-generated'
+        env:
+          GITHUB_TOKEN: ${{ secrets.JS_REPO_TOKEN }}
