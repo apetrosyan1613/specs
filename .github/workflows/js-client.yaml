@@ -25,7 +25,7 @@ jobs:
           destination_repo: 'apetrosyan1613/test-repo'
           user_email: apetrosyan@qase.io
           user_name: apetrosyan1613
-          commit_message: "[build] update client"
+          commit_message: "[build] update client "
           destination_branch_create: new-branch
           destination_folder:  qase-javascript/qaseio/src/
       # - name: create pr
