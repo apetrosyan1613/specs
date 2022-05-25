@@ -21,7 +21,7 @@ jobs:
         env:
           API_TOKEN_GITHUB: ${{ secrets.API_TOKEN_GITHUB }}
         with:
-          source-directory: examples/sdk/ts/*
+          source-directory: examples/sdk/ts/
           destination-github-username: 'apetrosyan1613'
           destination-repository-name: 'test-repo'
           user-email: apetrosyan@qase.io
