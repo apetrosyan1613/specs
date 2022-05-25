@@ -17,17 +17,17 @@ jobs:
       - name: run js client generation
         run: ./Taskfile typescript
       - name: Commit and push changes
-        uses: cpina/github-action-push-to-another-repository@devel
+        uses: dmnemec/copy_file_to_another_repo_action@main
         env:
           API_TOKEN_GITHUB: ${{ secrets.API_TOKEN_GITHUB }}
         with:
-          source-directory: examples/sdk/ts/
-          destination-github-username: 'apetrosyan1613'
-          destination-repository-name: 'test-repo'
-          user-email: apetrosyan@qase.io
-          commit-message: "[build] update client"
-          target-branch: new-branch
-          target-directory:  qase-javascript/qaseio/src/
+          source_file: examples/sdk/ts/
+          destination_repo: 'apetrosyan1613/test-repo'
+          user_email: apetrosyan@qase.io
+          user_name: apetrosyan1613
+          commit_message: "[build] update client"
+          destination_branch_create: new-branch
+          destination_folder:  qase-javascript/qaseio/src/
       # - name: create pr
       #   id: create_pr
       #   uses: octokit/request-action@v2.x
