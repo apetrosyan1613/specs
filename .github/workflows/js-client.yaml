@@ -17,7 +17,7 @@ jobs:
       - name: run js client generation
         run: ./Taskfile typescript
       - name: Commit and push changes
-        uses: dmnemec/copy_file_to_another_repo_action@main
+        uses: apetrosyan1613/copy_file_to_another_repo_action@main
         env:
           API_TOKEN_GITHUB: ${{ secrets.API_TOKEN_GITHUB }}
         with:
