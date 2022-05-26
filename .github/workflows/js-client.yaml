@@ -28,15 +28,19 @@ jobs:
           commit-message: "[build] update client "
           target-branch: ${{ steps.new_branch.outputs.new_branch }}
           target-directory:  qase-javascript/qaseio/src/
-      - name: Create Pull Request
-        uses: peter-evans/create-pull-request@v4
+      - name: create pr
+        id: create_pr
+        uses: octokit/request-action@v2.x
         with:
+          route: POST /repos/{owner}/{repo}/pulls
+          owner: apetrosyan1613
+          repo: test-repo
+          base: 'master'
+          head: ${{ steps.new_branch.outputs.new_branch }}
+          title: 'Specs updated'
           body: 'This PR is auto-generated'
-          title: '[Example] Update report'
-          branch: ${{ steps.new_branch.outputs.new_branch }}
-          base: master
-          path: apetrosyan1613/test-repo
-          token: ${{ secrets.API_TOKEN_GITHUB }}
+        env:
+          GITHUB_TOKEN: ${{ secrets.API_TOKEN_GITHUB }}
       # - name: create pr
       #   id: create_pr
       #   uses: octokit/request-action@v2.x
