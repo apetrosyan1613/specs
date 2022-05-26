@@ -35,7 +35,7 @@ jobs:
           route: POST /repos/{owner}/{repo}/pulls
           owner: apetrosyan1613
           repo: test-repo
-          base: 'master'
+          base: 'main'
           head: ${{ steps.new_branch.outputs.new_branch }}
           title: 'Specs updated'
           body: 'This PR is auto-generated'
