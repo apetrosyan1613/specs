@@ -13,7 +13,7 @@ jobs:
         uses: apetrosyan1613/github-action-push-to-another-repository@main
         with:
           target-repo-owner: 'apetrosyan1613'
-          target-repo-name: 'test-repo'
+          target-repo-name: 'qase-javascript'
           target-repo-path: 'qase-javascript'
           source-repo-path: 'specs'
           build-command: './Taskfile typescript'
@@ -25,4 +25,24 @@ jobs:
           base-pr-branch: 'main'
           pr-title: 'Specs updated'
           pr-body: 'This PR is auto-generated '
+          token: ${{ secrets.API_TOKEN_GITHUB }}
+  generate_php_client:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Commit and push changes
+        uses: apetrosyan1613/github-action-push-to-another-repository@main
+        with:
+          target-repo-owner: 'apetrosyan1613'
+          target-repo-name: 'qase-php-client'
+          target-repo-path: 'qase-php-client'
+          source-repo-path: 'specs'
+          build-command: './Taskfile php'
+          source-copy-dir: ./specs/examples/sdk/php/*
+          target-copy-dir: ./qase-php-client/
+          commit-message: '[build] update client'
+          git-username: 'Andranik Petrosyan'
+          git-email: 'apetrosyan@qase.io'
+          base-pr-branch: 'main'
+          pr-title: 'Specs updated'
+          pr-body: 'This PR is auto-generated'
           token: ${{ secrets.API_TOKEN_GITHUB }}
