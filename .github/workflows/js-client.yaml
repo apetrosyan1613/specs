@@ -9,36 +9,17 @@ jobs:
   generate_js_client:
     runs-on: ubuntu-latest
     steps:
-      # - name: set branch name
-      #   id: new_branch
-      #   run: echo ::set-output name=new_branch::$(echo "client_update_$(date +'%Y-%m-%dT%H.%M.%S')")
-      # - name: Checkout
-      #   uses: actions/checkout@v3
-      # - name: run js client generation
-      #   run: ./Taskfile typescript
       - name: Commit and push changes
         uses: apetrosyan1613/github-action-push-to-another-repository@main
         with:
-          target-repo: 'apetrosyan1613/test-repo'
-          source-repo-path: 'specs'
+          target-repo-owner: 'apetrosyan1613'
+          target-repo-name: 'test-repo'
           target-repo-path: 'qase-javascript'
+          source-repo-path: 'specs'
           build-command: './Taskfile typescript'
-          source-copy-dir: './specs/examples/sdk/ts/*'
-          target-copy-dir: './qase-javascript/qaseio/src'
+          source-copy-dir: "./{source-repo-path}/examples/sdk/ts/*"
+          target-copy-dir: './{target-repo-path}/qaseio/src'
           commit-message: '[build] update client'
           git-username: 'Andranik Petrosyan'
           git-email: 'apetrosyan@qase.io'
           token: ${{ secrets.API_TOKEN_GITHUB }}
-      # - name: create pr
-      #   id: create_pr
-      #   uses: octokit/request-action@v2.x
-      #   with:
-      #     route: POST /repos/{owner}/{repo}/pulls
-      #     owner: apetrosyan1613
-      #     repo: test-repo
-      #     base: 'main'
-      #     head: ${{ steps.new_branch.outputs.new_branch }}
-      #     title: 'Specs updated'
-      #     body: 'This PR is auto-generated'
-      #   env:
-      #     GITHUB_TOKEN: ${{ secrets.API_TOKEN_GITHUB }}
