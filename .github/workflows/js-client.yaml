@@ -22,7 +22,7 @@ jobs:
           commit-message: '[build] update client'
           git-username: 'Andranik Petrosyan'
           git-email: 'apetrosyan@qase.io'
-          base-pr-branch: 'main'
+          base-pr-branch: 'master'
           pr-title: 'Specs updated'
           pr-body: 'This PR is auto-generated '
           token: ${{ secrets.API_TOKEN_GITHUB }}
