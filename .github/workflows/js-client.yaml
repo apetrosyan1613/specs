@@ -23,6 +23,11 @@ jobs:
           source-repo-path: 'specs'
           target-repo-path: 'test-repo'
           build-command: './Taskfile typescript'
+          source-copy-dir: './specs/examples/sdk/ts/*'
+          target-copy-dir: './qase-javascript/qaseio/src'
+          commit-message: '[build] update client'
+          git-usermame: 'Andranik Petrosyan'
+          git-email: 'apetrosyan@qase.io'
           token: ${{ secrets.API_TOKEN_GITHUB }}
       # - name: create pr
       #   id: create_pr
