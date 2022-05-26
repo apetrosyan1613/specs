@@ -18,13 +18,12 @@ jobs:
       #   run: ./Taskfile typescript
       - name: Commit and push changes
         uses: apetrosyan1613/github-action-push-to-another-repository@main
-        env:
-          API_TOKEN_GITHUB: ${{ secrets.API_TOKEN_GITHUB }}
         with:
           target-repo: 'apetrosyan1613/test-repo'
           source-repo-path: 'specs'
           target-repo-path: 'test-repo'
           build-command: './Taskfile typescript'
+          token: ${{ secrets.API_TOKEN_GITHUB }}
       # - name: create pr
       #   id: create_pr
       #   uses: octokit/request-action@v2.x
