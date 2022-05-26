@@ -32,7 +32,7 @@ jobs:
           destination-github-username: 'apetrosyan1613'
           destination-repository-name: 'test-repo'
           user-email: apetrosyan@qase.io
-          commit-message: "[build] update client"
+          commit-message: "[build] update client "
           target-branch: ${{ steps.new_branch.outputs.new_branch }}
           target-directory:  qase-javascript/qaseio/src/
       # - name: create pr
