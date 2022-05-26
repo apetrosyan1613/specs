@@ -21,7 +21,7 @@ jobs:
         with:
           target-repo: 'apetrosyan1613/test-repo'
           source-repo-path: 'specs'
-          target-repo-path: 'qase-javascrip'
+          target-repo-path: 'qase-javascript'
           build-command: './Taskfile typescript'
           source-copy-dir: './specs/examples/sdk/ts/*'
           target-copy-dir: './qase-javascript/qaseio/src'
