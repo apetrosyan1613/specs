@@ -58,6 +58,12 @@ function typescript() {
   # TODO:extend add formatting
 }
 
+function python() {
+  rm -rf examples/sdk/python/*
+  openapi generate -i /specs/api.yaml -g python -o /sdk/python  --additional-properties=packageName=qaseio,packageVersion=3.0.0,packageUrl=https://github.com/qase-tms/qase-python
+  # TODO:extend add formatting
+}
+
 function ui() {
   docker run --rm -t \
     -e SWAGGER_JSON=/specs/api.yaml \
