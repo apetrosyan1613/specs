@@ -77,7 +77,7 @@ openapi() {
   docker run --rm -t \
     -v "$(pwd)"/api.yaml:/specs/api.yaml \
     -v "$(pwd)"/examples/sdk:/sdk \
-    openapitools/openapi-generator-cli:v5.3.1 "${@}"
+    openapitools/openapi-generator-cli:v5.4.0 "${@}"
 }
 
 swagger() {
