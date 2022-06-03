@@ -20,7 +20,7 @@ jobs:
           source-copy-dir: ./specs/examples/sdk/ts/*
           target-copy-dir: ./qase-javascript/qaseio/src
           commit-message: '[Automatically] update clients specs'
-          git-username: 'Andranik Petrosyan'
+          git-username: 'Bot'
           git-email: 'apetrosyan@qase.io'
           base-pr-branch: 'master'
           pr-title: 'Specs were updated'
