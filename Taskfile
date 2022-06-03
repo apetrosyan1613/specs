@@ -48,25 +48,32 @@ function go() {
 
 function php() {
   rm -rf examples/sdk/php/*
+  mkdir examples/sdk/php
+  cp examples/sdk/php-openapi-generator-ignore examples/sdk/php/.openapi-generator-ignore
   openapi generate -i /specs/api.yaml -g php -o /sdk/php -c /sdk/php.yml
   # TODO:extend add formatting
 }
 
 function typescript() {
   rm -rf examples/sdk/ts/*
+  mkdir examples/sdk/ts
+  cp examples/sdk/ts-openapi-generator-ignore examples/sdk/ts/.openapi-generator-ignore
   openapi generate -i /specs/api.yaml -g typescript-axios -t /sdk/templates/axios -o /sdk/ts -c /sdk/ts.yml
   # TODO:extend add formatting
 }
 
 function python() {
   rm -rf examples/sdk/python/*
+  mkdir examples/sdk/python
+  cp examples/sdk/ts-openapi-generator-ignore examples/sdk/ts/.openapi-generator-ignore
   version=$(cat VERSION)
   openapi generate -i /specs/api.yaml -g python -o /sdk/python  --additional-properties=packageName=qaseio,packageVersion=${version},packageUrl=https://github.com/qase-tms/qase-python
   # TODO:extend add formatting
 }
 
+
 function ui() {
-  docker run --rm -t \
+  docker run --rm -it \
     -e SWAGGER_JSON=/specs/api.yaml \
     -p 8080:8080 \
     -v "$(pwd)"/api.yaml:/specs/api.yaml \
@@ -75,15 +82,15 @@ function ui() {
 
 openapi() {
   # https://github.com/OpenAPITools/openapi-generator-cli
-  docker run --rm -t \
+  docker run --rm -it \
     -v "$(pwd)"/api.yaml:/specs/api.yaml \
     -v "$(pwd)"/examples/sdk:/sdk \
-    openapitools/openapi-generator-cli:v5.4.0 "${@}"
+    openapitools/openapi-generator-cli:v6.0.0 "${@}"
 }
 
 swagger() {
   # https://github.com/swagger-api/swagger-codegen
-  docker run --rm -t \
+  docker run --rm -it \
     -v "$(pwd)"/api.yaml:/specs/api.yaml \
     -v "$(pwd)"/examples/sdk:/sdk \
     swaggerapi/swagger-codegen-cli-v3:3.0.31 "${@}"
