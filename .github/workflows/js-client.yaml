@@ -24,7 +24,7 @@ jobs:
           git-email: 'apetrosyan@qase.io'
           base-pr-branch: 'master'
           pr-title: 'Specs were updated'
-          pr-body: "This PR is auto-generated [from](https://github.com/apetrosyan1613/specs). Please review the specs changes before the merging: https://github.com/apetrosyan1613/specs/commit/"
+          pr-body: "This PR is auto-generated [from](https://github.com/apetrosyan1613/specs). Please review the specs [changes](https://github.com/apetrosyan1613/specs/commit/$GITHUB_SHA) before the merging"
           token: ${{ secrets.API_TOKEN_GITHUB }}
   generate_php_client:
     runs-on: ubuntu-latest
@@ -43,7 +43,7 @@ jobs:
           git-username: 'Andranik Petrosyan'
           git-email: 'apetrosyan@qase.io'
           base-pr-branch: 'main'
-          pr-title: '[Automatically] Specs were updated'
+          pr-title: "[Automatically] Specs were updated"
           pr-body: "This PR is auto-generated [from](https://github.com/apetrosyan1613/specs). Please review the specs [changes](https://github.com/apetrosyan1613/specs/commit/$GITHUB_SHA) before the merging"
           token: ${{ secrets.API_TOKEN_GITHUB }}
   generate_python_client:
