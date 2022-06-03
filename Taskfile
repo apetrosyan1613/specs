@@ -60,6 +60,7 @@ function typescript() {
   cp examples/sdk/ts-openapi-generator-ignore examples/sdk/ts/.openapi-generator-ignore
   openapi generate -i /specs/api.yaml -g typescript-axios -t /sdk/templates/axios -o /sdk/ts -c /sdk/ts.yml
   # TODO:extend add formatting
+
 }
 
 function python() {
