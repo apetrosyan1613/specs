@@ -20,11 +20,11 @@ jobs:
           source-copy-dir: ./specs/examples/sdk/ts/*
           target-copy-dir: ./qase-javascript/qaseio/src
           commit-message: '[Automatically] update clients specs'
-          git-username: 'Bot'
+          git-username: 'Qase Bot'
           git-email: 'apetrosyan@qase.io'
           base-pr-branch: 'master'
           pr-title: 'Specs were updated'
-          pr-body: "This PR is auto-generated [from](https://github.com/apetrosyan1613/specs). Please review the specs [changes](https://github.com/apetrosyan1613/specs/commit/${{ github.sha }}) before the merging"
+          pr-body: "This PR is auto-generated [from](https://github.com/apetrosyan1613/specs). Please review the specs [changes](https://github.com/apetrosyan1613/specs/commit/${{ github.sha }}) before merging"
           token: ${{ secrets.API_TOKEN_GITHUB }}
   generate_php_client:
     runs-on: ubuntu-latest
@@ -40,11 +40,11 @@ jobs:
           source-copy-dir: ./specs/examples/sdk/php/*
           target-copy-dir: ./qase-php-client
           commit-message: '[Automatically] update clients specs'
-          git-username: 'Andranik Petrosyan'
+          git-username: 'Qase Bot'
           git-email: 'apetrosyan@qase.io'
           base-pr-branch: 'main'
           pr-title: "Specs were updated"
-          pr-body: "This PR is auto-generated [from](https://github.com/apetrosyan1613/specs). Please review the specs [changes](https://github.com/apetrosyan1613/specs/commit/${{ github.sha }}) before the merging"
+          pr-body: "This PR is auto-generated [from](https://github.com/apetrosyan1613/specs). Please review the specs [changes](https://github.com/apetrosyan1613/specs/commit/${{ github.sha }}) before merging"
           token: ${{ secrets.API_TOKEN_GITHUB }}
   generate_python_client:
     runs-on: ubuntu-latest
@@ -60,9 +60,9 @@ jobs:
           source-copy-dir: ./specs/examples/sdk/python/*
           target-copy-dir: ./qase-python/qaseio/
           commit-message: '[Automatically] update clients specs'
-          git-username: 'Andranik Petrosyan'
+          git-username: 'Qase Bot'
           git-email: 'apetrosyan@qase.io'
           base-pr-branch: 'master'
           pr-title: 'Specs were updated'
-          pr-body: "This PR is auto-generated [from](https://github.com/apetrosyan1613/specs). Please review the specs [changes](https://github.com/apetrosyan1613/specs/commit/${{ github.sha }}) before the merging"
+          pr-body: "This PR is auto-generated [from](https://github.com/apetrosyan1613/specs). Please review the specs [changes](https://github.com/apetrosyan1613/specs/commit/${{ github.sha }}) before merging"
           token: ${{ secrets.API_TOKEN_GITHUB }}
